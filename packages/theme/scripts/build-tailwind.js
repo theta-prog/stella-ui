@@ -57,17 +57,14 @@ const preset = {
   theme: {
     extend: {
       // ── Colors ──────────────────────────────────────────────────────────
-      colors: {
-        cosmos: toCSSVarMap(color.cosmos, ['color', 'cosmos']),
-        nebula: toCSSVarMap(color.nebula, ['color', 'nebula']),
-        aurora: toCSSVarMap(color.aurora, ['color', 'aurora']),
-        nova: toCSSVarMap(color.nova, ['color', 'nova']),
-        solar: toCSSVarMap(color.solar, ['color', 'solar']),
-        void: toCSSVarMap(color.void, ['color', 'void']),
-        starlight: toCSSVarMap(color.starlight, ['color', 'starlight']),
-        warning: toCSSVarMap(color.warning, ['color', 'warning']),
-        error: toCSSVarMap(color.error, ['color', 'error']),
-      },
+      // Dynamically derived from tokens.color so new palettes are picked up
+      // automatically without manual enumeration.
+      colors: Object.fromEntries(
+        Object.keys(color).map((paletteName) => [
+          paletteName,
+          toCSSVarMap(color[paletteName], ['color', paletteName]),
+        ]),
+      ),
 
       // ── Typography ───────────────────────────────────────────────────────
       // Font families: wrap in array so Tailwind emits a single font-family declaration
@@ -122,8 +119,9 @@ writeFileSync(
 
 // ---------------------------------------------------------------------------
 // Build Tailwind v4 @theme block
-// Each token is mapped to a Tailwind v4 CSS variable in the appropriate
-// namespace (--color-*, --font-*, --spacing-*, etc.)
+// Maps the token categories currently supported by this script to Tailwind v4
+// CSS variables in the appropriate namespaces (--color-*, --font-*,
+// --spacing-*, etc.). Not every branch in src/tokens.json is emitted here.
 // Requires @stella-ds/theme/css to be imported first to set --stella-* vars.
 // ---------------------------------------------------------------------------
 const v4Lines = ['/* Stella DS — Tailwind v4 @theme mapping */'];

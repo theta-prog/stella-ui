@@ -33,9 +33,10 @@ The compiled CSS also includes official scoped themes:
 
 ### Tailwind CSS v3
 
-Add the preset to your `tailwind.config.js`. The preset registers all Stella tokens
-under `theme.extend` using `var(--stella-*)` CSS variable references, so
-`data-theme` dark/light switches are automatically reflected in utilities.
+Add the preset to your `tailwind.config.js`. The preset registers the Stella token
+subsets that are exposed through Tailwind `theme.extend` utilities using
+`var(--stella-*)` CSS variable references, so `data-theme` dark/light switches are
+automatically reflected in those utilities.
 
 ```js
 // tailwind.config.js
@@ -73,9 +74,9 @@ Make sure `@stella-ds/theme/css` is imported in your global CSS (or call
 <button class="bg-cosmos-500 hover:bg-cosmos-600 text-starlight-primary">CTA</button>
 ```
 
-> **Note:** CSS variable references do not support Tailwind's opacity modifier
-> syntax (`text-cosmos-500/80`). Use `text-opacity-*` or an arbitrary value
-> (`text-[rgb(91_91_240/0.8)]`) instead.
+> **Note:** Colors defined as plain CSS variable references (`var(--stella-*)`) do not
+> support Tailwind's opacity modifier syntax (`text-cosmos-500/80`) or `text-opacity-*`
+> utilities. Use an arbitrary value (`text-[rgb(91_91_240/0.8)]`) instead.
 
 ### Tailwind CSS v4
 
