@@ -13,7 +13,12 @@
       "types": "./dist/index.d.ts"
     },
     "./tokens": "./src/tokens.json",
-    "./css": "./dist/tokens.css"
+    "./css": "./dist/tokens.css",
+    "./tailwind": {
+      "require": "./dist/tailwind-preset.cjs",
+      "import": "./dist/tailwind-preset.mjs"
+    },
+    "./tailwind-v4": "./dist/tailwind-v4.css"
   },
   "files": [
     "dist",
@@ -23,7 +28,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format esm --dts --out-dir dist && node scripts/build-css.js",
+    "build": "tsup src/index.ts --format esm --dts --out-dir dist && node scripts/build-css.js && node scripts/build-tailwind.js",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

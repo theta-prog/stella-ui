@@ -31,6 +31,66 @@ The compiled CSS also includes official scoped themes:
 
 `light` overrides the surface, text, accent, and shadow tokens; `dark` matches the default root token set.
 
+### Tailwind CSS v3
+
+Add the preset to your `tailwind.config.js`. The preset registers the Stella token
+subsets that are exposed through Tailwind `theme.extend` utilities using
+`var(--stella-*)` CSS variable references, so `data-theme` dark/light switches are
+automatically reflected in those utilities.
+
+```js
+// tailwind.config.js
+const stellaPreset = require('@stella-ds/theme/tailwind');
+
+module.exports = {
+  presets: [stellaPreset],
+  // your config...
+};
+```
+
+Or with ESM (`tailwind.config.mjs`):
+
+```js
+import stellaPreset from '@stella-ds/theme/tailwind';
+
+export default {
+  presets: [stellaPreset],
+};
+```
+
+Make sure `@stella-ds/theme/css` is imported in your global CSS (or call
+`injectCSSVars()` once) so the `--stella-*` variables are available at runtime.
+
+```css
+/* globals.css */
+@import '@stella-ds/theme/css';
+```
+
+**Available utilities (examples):**
+
+```html
+<p class="text-cosmos-500 font-semibold text-lg">Hello</p>
+<div class="bg-void-surface rounded-lg shadow-md p-4">Card</div>
+<button class="bg-cosmos-500 hover:bg-cosmos-600 text-starlight-primary">CTA</button>
+```
+
+> **Note:** Colors defined as plain CSS variable references (`var(--stella-*)`) do not
+> support Tailwind's opacity modifier syntax (`text-cosmos-500/80`) or `text-opacity-*`
+> utilities. Use an arbitrary value (`text-[rgb(91_91_240/0.8)]`) instead.
+
+### Tailwind CSS v4
+
+Import the `@theme` mapping file **after** `@stella-ds/theme/css` in your
+global CSS. Tailwind v4 picks up the `@theme` block and generates utilities
+from the `--stella-*` CSS variables.
+
+```css
+/* globals.css */
+@import 'tailwindcss';
+@import '@stella-ds/theme/css';       /* sets --stella-* CSS variables    */
+@import '@stella-ds/theme/tailwind-v4'; /* maps them into Tailwind's @theme */
+```
+
 ### JavaScript / TypeScript
 
 ```ts
