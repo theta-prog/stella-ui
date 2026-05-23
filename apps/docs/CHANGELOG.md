@@ -1,5 +1,13 @@
 # @stella-ds/docs
 
+## 0.0.12
+
+### Patch Changes
+
+- Updated dependencies [5b2e498]
+  - @stella-ds/theme@0.8.0
+  - @stella-ds/react@0.8.0
+
 ## 0.0.11
 
 ### Patch Changes
