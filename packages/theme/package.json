@@ -1,6 +1,6 @@
 {
   "name": "@stella-ds/theme",
-  "version": "0.6.1",
+  "version": "0.8.0",
   "description": "Stella UI design tokens – framework-agnostic CSS variables and JSON",
   "license": "MIT",
   "type": "module",

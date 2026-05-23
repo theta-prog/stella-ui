@@ -1,5 +1,11 @@
 # @stella-ds/theme
 
+## 0.8.0
+
+### Minor Changes
+
+- 5b2e498: Add Tailwind CSS v3 preset and v4 @theme integration to @stella-ds/theme
+
 ## 0.6.1
 
 ### Patch Changes
