@@ -3,6 +3,11 @@
   "version": "0.8.0",
   "description": "Stella UI design tokens – framework-agnostic CSS variables and JSON",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theta-prog/stella-ds.git",
+    "directory": "packages/theme"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",

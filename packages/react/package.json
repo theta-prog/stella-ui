@@ -3,6 +3,11 @@
   "version": "0.8.0",
   "description": "Stella UI React component library – Radix UI primitives with design tokens",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theta-prog/stella-ds.git",
+    "directory": "packages/react"
+  },
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
